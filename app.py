@@ -17,4 +17,4 @@ def print_form_fields(pdf_path):
 
 
 # Replace 'your_file.pdf' with the path to your PDF
-print_form_fields('your_file.pdf')
+print_form_fields('pdfs/D0010.pdf')
