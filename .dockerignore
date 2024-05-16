@@ -1,0 +1,13 @@
+# Ignore the requests directory
+requests
+
+# Ignore the .venv directory
+.venv
+
+# Ignore Python cache files
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+
+.gitignore
