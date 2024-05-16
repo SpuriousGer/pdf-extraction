@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, send_file, send_from_directory, render_template, abort
+from flask import Flask, request, jsonify, send_file, render_template
 import fitz  # PyMuPDF
 import os
 import json
@@ -6,6 +6,7 @@ import hashlib
 import qrcode
 
 app = Flask(__name__, template_folder='html')
+
 
 def get_form_fields(pdf_path):
     fields = []
@@ -15,6 +16,7 @@ def get_form_fields(pdf_path):
             fields.append(widget.field_name)
     doc.close()
     return fields
+
 
 def fill_pdf_from_form(pdf_path, form_data, unique_id):
     doc = fitz.open(pdf_path)
@@ -50,9 +52,14 @@ def fill_pdf_from_form(pdf_path, form_data, unique_id):
 
     return filled_pdf_path
 
+
 @app.route('/fields/<pdf_name>', methods=['GET', 'POST'])
 def handle_pdf_fields(pdf_name):
     print(f"Received request for PDF: {pdf_name}")  # Debug print
+
+    # Ensure the pdf_name ends with .pdf
+    if not pdf_name.endswith('.pdf'):
+        pdf_name += '.pdf'
 
     pdf_path = os.path.join('pdfs', pdf_name)
     print(f"Constructed PDF path: {pdf_path}")  # Debug print
@@ -68,24 +75,23 @@ def handle_pdf_fields(pdf_name):
 
     elif request.method == 'POST':
         print("Processing POST request")  # Debug print
-        data = request.json
-        if not data:
-            print("No JSON data received")  # Debug print
-            return jsonify({"error": "JSON data is required"}), 400
-        form_data = data.get('form_data')
+        form_data = {}
+        for key, value in request.form.items():
+            form_data[key] = value
 
         if not form_data:
             print("form_data is missing")  # Debug print
             return jsonify({"error": "form_data is required"}), 400
 
         # Generate a unique ID using SHA256 of the input JSON
-        unique_id = hashlib.sha256(json.dumps(data, sort_keys=True).encode()).hexdigest()
+        unique_id = hashlib.sha256(json.dumps(form_data, sort_keys=True).encode()).hexdigest()
         request_path = os.path.join('requests', f'{unique_id}.json')
         with open(request_path, 'w') as f:
-            json.dump(data, f)
+            json.dump({"form_data": form_data}, f)
 
         filled_pdf_path = fill_pdf_from_form(pdf_path, form_data, unique_id)
-        return send_file(filled_pdf_path, as_attachment=True)
+        return send_file(filled_pdf_path, as_attachment=True, download_name=f"{unique_id}.pdf")
+
 
 @app.route('/requests/<unique_id>', methods=['GET'])
 def get_request(unique_id):
@@ -99,6 +105,7 @@ def get_request(unique_id):
 
     return jsonify(data)
 
+
 @app.route('/html/<html_name>', methods=['GET'])
 def serve_html(html_name):
     html_path = os.path.join('html', f'{html_name}.html')
@@ -107,6 +114,7 @@ def serve_html(html_name):
         return jsonify({"error": "HTML file not found"}), 404
 
     return render_template(f'{html_name}.html')
+
 
 if __name__ == '__main__':
     # Ensure the requests folder exists
