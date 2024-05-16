@@ -2,4 +2,3 @@ Flask
 PyMuPDF
 qrcode[pil]
 Pillow
-PyPDF2

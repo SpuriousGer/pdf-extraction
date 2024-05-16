@@ -1,12 +1,11 @@
-from flask import Flask, request, jsonify, send_file
+from flask import Flask, request, jsonify, send_file, send_from_directory, render_template, abort
 import fitz  # PyMuPDF
 import os
 import json
 import hashlib
 import qrcode
-from PyPDF2 import PdfReader, PdfWriter
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='html')
 
 def get_form_fields(pdf_path):
     fields = []
@@ -42,32 +41,14 @@ def fill_pdf_from_form(pdf_path, form_data, unique_id):
         rect = fitz.Rect(x_center, y_position, x_center + qr_size, y_position + qr_size)
         page.insert_image(rect, filename=qr_image_path)
 
-    filled_pdf_path = os.path.join('requests', f'{unique_id}_filled.pdf')
+    filled_pdf_path = os.path.join('requests', f'{unique_id}.pdf')
     doc.save(filled_pdf_path)
     doc.close()
 
     # Delete the QR code image file
     os.remove(qr_image_path)
 
-    # Flatten the PDF to make fields non-editable
-    flattened_pdf_path = os.path.join('requests', f'{unique_id}.pdf')
-    flatten_pdf(filled_pdf_path, flattened_pdf_path)
-
-    # Remove the intermediate filled PDF
-    os.remove(filled_pdf_path)
-
-    return flattened_pdf_path
-
-def flatten_pdf(input_pdf_path, output_pdf_path):
-    input_pdf = PdfReader(open(input_pdf_path, "rb"))
-    output_pdf = PdfWriter()
-
-    for page_num in range(len(input_pdf.pages)):
-        page = input_pdf.pages[page_num]
-        output_pdf.add_page(page)
-
-    with open(output_pdf_path, "wb") as outputStream:
-        output_pdf.write(outputStream)
+    return filled_pdf_path
 
 @app.route('/fields/<pdf_name>', methods=['GET', 'POST'])
 def handle_pdf_fields(pdf_name):
@@ -117,6 +98,15 @@ def get_request(unique_id):
         data = json.load(f)
 
     return jsonify(data)
+
+@app.route('/html/<html_name>', methods=['GET'])
+def serve_html(html_name):
+    html_path = os.path.join('html', f'{html_name}.html')
+
+    if not os.path.exists(html_path):
+        return jsonify({"error": "HTML file not found"}), 404
+
+    return render_template(f'{html_name}.html')
 
 if __name__ == '__main__':
     # Ensure the requests folder exists
