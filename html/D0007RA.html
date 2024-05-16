@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Receipt</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+<div class="container">
+    <nav>
+        <p>Dezember 2023</p>
+        <img src="{{ url_for('static', filename='Fondsdepot-Bank-FNZ-black.svg') }}" alt="Logo">
+    </nav>
+    <div class="d-flex fax-order">
+        <div class="left-div">
+            <p class="text-900 text-14">Wiederholung der Fax-Order vom </p>
+
+            <p class="text-14">(Datum/Uhrzeit)</p>
+            <input id="WDH_FAXORDER" type="text">
+            <p class="text-small">z. B. wegen technischer Störung oder Fehlermeldung
+                beim Absender</p>
+        </div>
+        <div class="right-div">
+            <textarea id="MEHRZWECK"></textarea>
+
+            <p class="text-small text-900">Mehrzweckfeld</p>
+
+
+        </div>
+    </div>
+    <section class="name">
+        <h1>Auftrag Sparplan</h1>
+        <p class="text-14">(<b class=" ">nur für Lastschrifteinzug</b>, bei Überweisung bzw. Dauerauftrag nicht
+            erforderlich)</p>
+    </section>
+    <div class="user-info d-flex justify-between">
+        <p class="info">
+            pDer Auftrag kann per <b> Telefax an +49 (0) 9281 7258 - 46118</b> oder per Mailanhang
+            jeweils mit Kundenunterschrift an <b>info@fondsdepotbank.de</b> gesendet werden
+        </p>
+        <div class="id-num">
+            <div>
+                <input id="DEPOT_NR" type="text" placeholder="0123456789">
+                <b class="text-small">Depot-Nr.</b>
+
+
+            </div>
+
+        </div>
+
+    </div>
+    <div class="heading">
+        <p>A. Angaben Depotinhaber (im Nachfolgenden "Inhaber" genannt)</p>
+    </div>
+    <div class="inner-heading">
+        <p class="para">1. Inhaber</p>
+        <div class="input-w">
+            <div class="w-50">
+                <input id="INH_01_NAME" type="text">
+                <p class="text-small">Name</p>
+
+            </div>
+            <div class="w-50">
+                <input id="INH_01_VORNAME" type="text">
+                <p class="text-small">Vorname/n <sup>1</sup></p>
+
+            </div>
+        </div>
+        <div class="input-w">
+            <div class="w-90">
+                <input id="INH_01_STRASSE" type="text">
+                <p class="text-small"> Straße</p>
+
+            </div>
+            <div class="">
+                <input id="INH_01_NR" type="text">
+                <p class="text-small">Nummer</p>
+
+            </div>
+        </div>
+        <div class="input-w">
+            <div class="w-20">
+                <input id="INH_01_PLZ" type="text">
+                <p class="text-small">PLZ</p>
+
+            </div>
+            <div class="w-5">
+                <input id="INH_01_ORT" type="text">
+                <p class="text-small">Ort</p>
+
+            </div>
+            <div class="">
+                <input id="INH_01_LAND" type="text">
+                <p class="text-small">Land</p>
+
+            </div>
+        </div>
+        <div class="input-w">
+            <div class="w-50">
+                <input id="INH_01_TEL" type="text">
+                <p class="text-small">Telefon <sup>2</sup></p>
+
+            </div>
+            <div class="w-50">
+                <input id="INH_01_EMAIL" type="text">
+                <p class="text-small">E-Mail</p>
+
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="inner-heading">
+            <p class="para">2. Inhaber</p>
+            <div class="input-w">
+                <div class="w-50">
+                    <input id="INH_02_NAME" type="text">
+                    <p class="text-small">Name</p>
+
+                </div>
+                <div class="w-50">
+                    <input id="INH_02_VORNAME" type="text">
+                    <p class="text-small">Vorname/n <sup>1</sup></p>
+
+                </div>
+            </div>
+            <div class="input-w">
+                <div class="w-90">
+                    <input id="INH_02_STRASSE" type="text">
+                    <p class="text-small">Straße</p>
+
+                </div>
+                <div class="">
+                    <input id="INH_02_NR" type="text">
+                    <p class="text-small">Nummer</p>
+
+                </div>
+            </div>
+            <div class="input-w">
+                <div class="w-20">
+                    <input id="INH_02_PLZ" type="text">
+                    <p class="text-small">PLZ</p>
+
+                </div>
+                <div class="w-5">
+                    <input id="INH_02_ORT" type="text">
+                    <p class="text-small">Ort</p>
+
+                </div>
+                <div class="">
+                    <input id="INH_02_LAND" type="text">
+                    <p class="text-small"> Land</p>
+
+                </div>
+            </div>
+            <div class="input-w">
+                <div class="w-50">
+                    <input id="INH_02_TEL" type="text">
+                    <p class="text-small">Telefon <sup>2</sup></p>
+
+                </div>
+                <div class="w-50">
+                    <input id="INH_02_EMAIL" type="text">
+                    <p class="text-small">E-Mail</p>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="bank-plan">
+        <div class="heading">
+            <p>B. Sparplan einrichten/ändern/aussetzen/löschen</p>
+        </div>
+        <div class="para1 text-500">
+            <p>Die Fondsdepot Bank GmbH (im Nachfolgenden "Bank" genannt) führt sämtliche Aufträge des/der
+                Depotinhaber/s als reines Ausführungsge-
+                schäft aus. Eine Prüfung, ob der von dem/den Depotinhaber/n beabsichtigte Kauf der Anteile oder Aktien
+                an Investmentvermögen (im Nachfol-
+                genden "Investmentanteile" genannt) für den/die Depotinhaber angemessen ist/sind, d.h. ob der/die
+                Depotinhaber über die erforderlichen
+                Kenntnisse und Erfahrungen verfügt/verfügen, um die Risiken im Zusammenhang mit dem Kauf der
+                Investmentanteile angemessen beurteilen
+                zu können, nimmt die Bank nicht vor.</p>
+        </div>
+        <div class="para2">
+            <p class="text-14">Ich/Wir möchte/n regelmäßig bis auf Widerruf Investmentanteile kaufen und beauftrage/n
+                die Bank, für den jeweiligen Anlagebetrag (Mindestanlagebe-
+                trag je Investmentvermögen und Anlagetermin 25,00 EUR 4 ) Anteile nachfolgender Investmentvermögen zu
+                erwerben. Der jeweilige Betrag soll mittels
+                Lastschrift von der u. g. Bankverbindung eingezogen werden.</p>
+        </div>
+    </div>
+    <div class="table">
+        <table style="width:100%">
+            <tr>
+                <th style="width:25%">ISIN/Fondsname</th>
+                <th>Neuerteilung Anlagebetrag</th>
+                <th>Änderung Anlagebetrag</th>
+                <th>Aussetzung der</th>
+                <th>Sparrate</th>
+                <th>Löschung</th>
+                <th>weitere Angaben</th>
+            </tr>
+            <tr>
+                <td>
+                    <input id="SPLAN_01_ISIN" class="input1" type="text">
+                </td>
+                <td>
+                    <div>
+                        <input id="SPLAN_01_BETRAG_LSE_NEU" class="input2" type="text">
+                        <p class="text-14 text-300">EUR</p>
+
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <input id="SPLAN_01_BETRAG_LSE_AEND" class="input2" type="text">
+                        <p class="text-14 text-300">EUR</p>
+
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <input id="SPLAN_01_DATUM_AUSSETZEN_VON" class="input3" type="text">
+                        <p class="text-small text-300">von Monat/Jahr</p>
+
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <input id="SPLAN_01_DATUM_AUSSETZEN_BIS" class="input3" type="text">
+                        <p class="text-small text-300">bis Monat/Jahr</p>
+
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <input id="SPLAN_01_DATUM_LOES_AB_BEFR_BIS" class="input3" type="text">
+                        <p class="text-small text-300">ab Monat/Jahr</p>
+
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <input id="SPLAN_01_ANGABEN" class="input3" type="text">
+                        <p class="text-small text-300">Sonstiges</p>
+
+                    </div>
+                </td>
+
+            </tr>
+            <tr>
+                <td><input id="SPLAN_02_ISIN" class="input1" type="text"></td>
+                <td>
+                    <div>
+                        <input id="SPLAN_02_BETRAG_LSE_NEU" class="input2" type="text">
+                        <p class="text-14 text-300">EUR</p>
+
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <input id="SPLAN_02_BETRAG_LSE_AEND" class="input2" type="text">
+                        <p class="text-14 text-300">EUR</p>
+
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <input id="SPLAN_02_DATUM_AUSSETZEN_VON" class="input3" type="text">
+                        <p class="text-small text-300">von Monat/Jahr</p>
+
+                    </div>
+                </td>
+
+                <td>
+                    <div>
+                        <input id="SPLAN_02_DATUM_AUSSETZEN_BIS" class="input3" type="text">
+                        <p class="text-small text-300">bis Monat/Jahr</p>
+
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <input id="SPLAN_02_DATUM_LOES_AB_BEFR_BIS" class="input3" type="text">
+                        <p class="text-small text-300">ab Monat/Jahr</p>
+
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <input id="SPLAN_02_ANGABEN" class="input3" type="text">
+                        <p class="text-small text-300">Sonstiges</p>
+
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><input id="SPLAN_03_ISIN" class="input1" type="text"></td>
+                <td>
+                    <div>
+                        <input id="SPLAN_03_BETRAG_LSE_NEU" class="input2" type="text">
+                        <p class="text-14 text-300">EUR</p>
+
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <input id="SPLAN_03_BETRAG_LSE_AEND" class="input2" type="text">
+                        <p class="text-14 text-300">EUR</p>
+
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <input id="SPLAN_03_DATUM_AUSSETZEN_VON" class="input3" type="text">
+                        <p class="text-small text-300">von Monat/Jahr</p>
+
+                    </div>
+                </td>
+
+                <td>
+                    <div>
+                        <input id="SPLAN_03_DATUM_AUSSETZEN_BIS" class="input3" type="text">
+                        <p class="text-small text-300">bis Monat/Jahr</p>
+
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <input id="SPLAN_03_DATUM_LOES_AB_BEFR_BIS" class="input3" type="text">
+                        <p class="text-small text-300">ab Monat/Jahr</p>
+
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <input id="SPLAN_03_ANGABEN" class="input3" type="text">
+                        <p class="text-small text-300">Sonstiges</p>
+
+                    </div>
+                </td>
+
+            </tr>
+            <tr>
+                <td><input id="SPLAN_04_ISIN" class="input1" type="text"></td>
+                <td>
+                    <div>
+                        <input id="SPLAN_04_BETRAG_LSE_NEU" class="input2" type="text">
+                        <p class="text-14 text-300">EUR</p>
+
+                    </div>
+                </td>
+
+                <td>
+                    <div>
+                        <input id="SPLAN_04_BETRAG_LSE_AEND" class="input2" type="text">
+                        <p class="text-14 text-300">EUR</p>
+
+                    </div>
+                </td>
+
+                <td>
+                    <div>
+                        <input id="SPLAN_04_DATUM_AUSSETZEN_VON" class="input3" type="text">
+                        <p class="text-small text-300">von Monat/Jahr</p>
+
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <input id="SPLAN_04_DATUM_AUSSETZEN_BIS" class="input3" type="text">
+                        <p class="text-small text-300">bis Monat/Jahr</p>
+
+                    </div>
+                </td>
+
+                <td>
+                    <div>
+                        <input id="SPLAN_04_DATUM_LOES_AB_BEFR_BIS" class="input3" type="text">
+                        <p class="text-small text-300">ab Monat/Jahr</p>
+
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <input id="SPLAN_04_ANGABEN" class="input3" type="text">
+                        <p class="text-small text-300">Sonstiges</p>
+
+                    </div>
+                </td>
+
+            </tr>
+            <tr style="height:40px">
+                <td><input id="SPLAN_05_ISIN" class="input1" type="text">
+                </td>
+                <td>
+                    <div>
+                        <input id="SPLAN_05_BETRAG_LSE_NEU" class="input2" type="text">
+                        <p class="text-14 text-300">EUR</p>
+
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <input id="SPLAN_05_BETRAG_LSE_AEND" class="input2" type="text">
+                        <p class="text-14 text-300">EUR</p>
+
+                    </div>
+                </td>
+                <td>
+
+                    <div>
+                        <input id="SPLAN_05_DATUM_AUSSETZEN_VON" class="input3" type="text">
+                        <p class="text-small text-300">von Monat/Jahr</p>
+
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <input id="SPLAN_05_DATUM_AUSSETZEN_BIS" class="input3" type="text">
+                        <p class="text-small text-300">bis Monat/Jahr</p>
+
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <input id="SPLAN_05_DATUM_LOES_AB_BEFR_BIS" class="input3" type="text">
+                        <p class="text-small text-300">ab Monat/Jahr</p>
+
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <input id="SPLAN_05_ANGABEN" class="input3" type="text">
+                        <p class="text-small text-300">Sonstiges</p>
+
+                    </div>
+                </td>
+
+            </tr>
+        </table>
+    </div>
+    <div class="ww-50 d-flex justify-between">
+        <div class=" inner-heading d-flex flex-column">
+            <p class="para para2">1. Inhaber</p>
+            <div class="input5-w5 d-flex justify-between">
+                <div class="w-50 m-10">
+                    <input class="disabled" id="INH_01_NAME_DUPL" type="text">
+                    <p class="text-small">Name</p>
+
+                </div>
+                <div class="w-50 m-10">
+                    <input class="disabled" id="INH_01_VORNAME_DUPL" type="text">
+                    <p class="text-small">Vorname/n</p>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="inner-heading d-flex flex-column">
+            <p class=" para para2">2. Inhaber</p>
+
+            <div class="input5-w5 d-flex justify-between">
+                <div class="w-50 m-10">
+                    <input class="disabled" id="INH_02_NAME_DUPL" type="text">
+                    <p class="text-small">Name</p>
+
+                </div>
+                <div class="w-50 m-10">
+                    <input class="disabled" id="INH_02_VORNAME_DUPL" type="text">
+                    <p class="text-small">Vorname/n</p>
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="id-num d-flex justify-end mt-10">
+        <div>
+            <input class="disabled" id="DEPOT_NR_DUPL" maxlength="10" placeholder="0123456789">
+            <b class="text-small">Depot-Nr.</b>
+
+
+        </div>
+
+    </div>
+    <div class="hr"></div>
+    <div>
+        <p>Die <b>regelmäßige Anlage</b> im Rahmen des Sparplans soll jeweils <b>monatlich</b>, sonst</p>
+        <div class="d-flex checkbox-div">
+            <div class="check d-flex justify-center align-items-center">
+                <input id="PLAN_ANLAGE_RHYTHMUS_01" type="checkbox">
+                <p class="text-14">2monatl.,</p>
+            </div>
+            <div class="check d-flex justify-center align-items-center">
+                <input id="PLAN_ANLAGE_RHYTHMUS_02" type="checkbox">
+                <p class="text-14">vierteljährl.,</p>
+            </div>
+            <div class="check d-flex justify-center align-items-center">
+                <input id="PLAN_ANLAGE_RHYTHMUS_03" type="checkbox">
+                <p class="text-14">halbjährl.</p>
+            </div>
+            <div class="check d-flex justify-center align-items-center">
+                <input id="PLAN_ANLAGE_RHYTHMUS_04" type="checkbox">
+                <p class="text-14">jährl.,zum </p>
+            </div>
+            <div class="check d-flex justify-center align-items-center">
+                <input id="PLAN_ANLAGE_TERMIN_01" type="checkbox">
+                <p class="text-14">10.,</p>
+            </div>
+            <div class="check d-flex justify-center align-items-center">
+                <input id="PLAN_ANLAGE_TERMIN_02" type="checkbox">
+                <p class="text-14">25.,</p>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex">
+        <div class="date" style="margin: 0 10px 0 0;">
+            <input id="PLAN_ANLAGE_TERMIN_03" style="width: 50px;" type="text">
+            <p class="text-small">oder am </p>
+        </div>
+        <div class="date" style="margin: 0 10px;">
+            <input id="PLAN_ANLAGE_MONAT" style="width: 130px;" type="text">
+            <p class="text-small">erstmalig im Monat </p>
+        </div>
+        <div class="date" style="margin: 0 10px;">
+            <input id="PLAN_ANLAGE_JAHR" style="width: 50px;" type="text">
+            <p class="text-small">Jahr</p>
+        </div>
+        <p class="text-14">, sonst zum nächstmöglichen Termin (10./25. oder anderer Anlagetermin) erfolgen</p>
+    </div>
+    <div class="d-flex flex-column my-10">
+        <p class="text-500">Dynamisierung :</p>
+        <div class="d-flex">
+            <p class="d-flex justify-center align-items-center text-14">
+                Bitte erhöhen Sie automatisch den Anlagebetrag jeweils nach 12 Monaten um
+                <input id="PLAN_DYN_01" class="one" type="checkbox"> 3%
+                <input id="PLAN_DYN_02" class="one" type="checkbox"> 5%
+                <input id="PLAN_DYN_03" class="one" type="checkbox"> 10%
+                oder
+                <input id="PLAN_DYN_04" style="width: 50px; height: 20px; margin: 0 3px;" type="text">
+
+                der letzten Anlagesumme
+
+            </p>
+
+        </div>
+
+    </div>
+    <div class="note">
+        <p>Hinweis: Zugangsdaten für das Banking Portal sowie die pushTAN-App werden nur an die Meldeanschrift
+            des Inhabers versendet. Dies gilt auch bei
+            hinterlegter abweichender Versandanschrift</p>
+    </div>
+    <div class="heading">
+        <p>C. Bankverbindung</p>
+    </div>
+    <div>
+        <p class="text-500 text-14 my-10">
+            (Bitte ein Feld ankreuzen, da sonst die Auftragsausführung nicht möglich ist!)
+        </p>
+        <p class=" text-14 my-10">
+            Ich/Wir beauftrage/n die Bank, den jeweiligen Einzahlungsbetrag von folgendem Konto einzuziehen:
+        </p>
+
+    </div>
+    <div class="d-flex">
+        <p class="d-flex justify-center align-items-center text-14">
+            <input id="BV_REF" class="one" type="checkbox"> Referenzbankverbindung
+            <input id="BV_ABW" class="one" type="checkbox"> abweichende Bankverbindung
+            <input id="BV_GK" class="one" type="checkbox"> Geldkonto
+
+        </p>
+
+    </div>
+    <p class="text-500 text-14 my-10">
+        Nachfolgendes nur ausfüllen, wenn der Lastschrifteinzug über die abweichende Bankverbindung abgewickelt werden
+        soll.
+    </p>
+    <div>
+        <div class="heading-blue">
+            <h3 class=" text-500">SEPA-Lastschriftmandat</h3>
+        </div>
+        <p class="text-14">Gläubiger-Identifikationsnummer der Bank: <span class="text-500">DE55ZZZ00000261267</span>
+            <br>
+            Die Mandatsreferenz wird Ihnen nach Einrichtung des Mandats separat schriftlich mitgeteilt (z. B. bei
+            erstmaligem Einzug einer Lastschrift).
+            <br>
+            Ich/Wir ermächtige/n die Bank, Geldbeträge von meinem/unserem Konto mittels Lastschrift einzuziehen.
+            Zugleich weise/n ich/wir mein/unser Kreditinstitut
+            an, die von der Bank auf dieses Konto gezogene Lastschrift einzulösen
+            <br>
+            Ich/Wir stelle/n sicher, dass eine SEPA-Basislastschrift von der Bankverbindung erfolgen kann und habe/n
+            keine Sparkonten angegeben.
+        </p>
+        <h3 class="text-500 ">Wichtige Informationen:</h3>
+        <div class="d-flex">
+            <p>-</p>
+            <p class="m-10 text-14">
+                Ich/Wir kann/können innerhalb von 8 Wochen, beginnend mit dem Belastungsdatum, die Erstattung des
+                belasteten Betrages verlangen. Es gelten
+                dabei die mit dem kontoführenden Kreditinstitut vereinbarten Bedingungen.
+            </p>
+        </div>
+        <div class="d-flex">
+            <p>-</p>
+            <p class="m-10 text-14">
+                Ich/Wir nehme/n zur Kenntnis, dass Kaufaufträge per Lastschrift nur bis zu einem Betrag von 50.000,00
+                EUR je Auftrag ausgeführt werden können.
+                Bei Beträgen über 50.000,00 EUR werde/n ich/wir den Anlagebetrag auf das Einzahlungskonto der Fondsdepot
+                Bank GmbH überweisen bei der
+                Commerzbank AG Stuttgart, IBAN: DE60 6008 0000 0914 4055 00/BIC: DRES DE FF 600 unter Angabe von
+                Fonsdepot-Nr, ISIN des zu erwerben-
+                den Fonds und Kundenname
+            </p>
+        </div>
+        <div class="d-flex">
+            <p>-</p>
+            <p class="m-10 text-14">
+                Aufträge zu Käufen und Sparplänen per Lastschrift kann ich/können wir nur auf einem gültigen Formular
+                der Fondsdepot Bank GmbH erteilen.
+            </p>
+        </div>
+        <div class="d-flex">
+            <p>-</p>
+            <p class="m-10 text-14">
+                Mandatserteilung: Das SEPA-Lastschriftmandat verliert seine Gültigkeit, wenn der Zahlungspflichtige oder
+                Zahlungsempfänger dieses schriftlich wi-
+                derruft bzw. nach dem letzten Lastschrifteinzug 36 Monate nicht in Anspruch genommen wurde. In diesen
+                Fällen und bei Änderung des Girokontoin-
+                habers ist die Erteilung eines neuen SEPA-Lastschriftmandates erforderlich
+            </p>
+        </div>
+    </div>
+    <div class="my-10">
+        <input id="BV_ABW_INH" style="width: 100%;" type="text">
+        <p class="text-small">Girokontoinhaber (Name, Vorname/n)</p>
+
+        <div class="input-w mt-10">
+            <div class="w-90">
+                <input id="BV_ABW_BANK" type="text">
+                <p class="text-small">Kreditinstitut (Name, Ort)</p>
+
+            </div>
+            <div class="id-num ">
+                <input id="BV_ABW_BIC" maxlength='11' placeholder="01234567891">
+                <p class="text-small">BIC</p>
+
+            </div>
+        </div>
+        <div class="id-num mt-10">
+            <input id="BV_ABW_IBAN" style="width: 79%;" maxlength='34' placeholder="0123456789012345678901234567890123">
+            <p class="text-small">IBAN</p>
+
+        </div>
+        <div class="mt-10">
+            <input id="BV_ABW_ORT_DATUM" style="width: 60%;" type="text">
+            <p class="text-small">Ort, Datum</p>
+
+        </div>
+
+        <div class="doted-border">
+            <div class="note text-14 ">
+                <p>Hinweis: Dritte, insbesondere mein/unser Berater, sind nicht zur Entgegennahme von Bargeld, Schecks,
+                    Überweisungen oder sonstigen Vermö-
+                    genswerten von mir/uns berechtigt; Zahlungen sind nur direkt an die Bank per Überweisung oder
+                    Lastschrifteinzug möglich.</p>
+            </div>
+
+        </div>
+
+
+    </div>
+    <div class="ww-50 d-flex justify-between">
+        <div class=" inner-heading d-flex flex-column">
+            <p class="para para2">1. Inhaber</p>
+            <div class="input5-w5 d-flex justify-between">
+                <div class="w-50 m-10">
+                    <input class="disabled" id="INH_01_NAME_DUPL_01" type="text">
+                    <p class="text-small">Name</p>
+
+                </div>
+                <div class="w-50 m-10">
+                    <input class="disabled" id="INH_01_VORNAME_DUPL_01" type="text">
+                    <p class="text-small">Vorname/n</p>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="inner-heading d-flex flex-column">
+            <p class=" para para2">2. Inhaber</p>
+
+            <div class="input5-w5 d-flex justify-between">
+                <div class="w-50 m-10">
+                    <input class="disabled" id="INH_02_NAME_DUPL_02" type="text">
+                    <p class="text-small">Name</p>
+
+                </div>
+                <div class="w-50 m-10">
+                    <input class="disabled" id="INH_02_VORNAME_DUPL_02" type="text">
+                    <p class="text-small">Vorname/n</p>
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="id-num d-flex justify-end my-10">
+        <div>
+            <input class="disabled" id="DEPOT_NR_DUPL_01" maxlength="10" placeholder="0123456789">
+            <b class="text-small">Depot-Nr.</b>
+
+
+        </div>
+
+    </div>
+    <div>
+        <div class="heading">
+            <p>D. Schlusserklärungen</p>
+        </div>
+        <div class="heading-blue">
+            <h3 class=" text-500 text-14">Verzicht auf Herausgabe von Vergütungszahlungen</h3>
+            <p class="text-14">
+                Ich/Wir verzichte/n auf meine/unsere, aus sämtlichen Vergütungszahlungen, die in der ex
+                ante-Kosteninformation dargestellt sind, herrührenden jetzigen
+                und zukünftigen Ansprüche, von der Bank und/oder deren Vertriebspartnern diese heraus zu verlangen. Auf
+                Wunsch kann ich/können wir auch eine Auf-
+                stellung der Kosten, die nach den einzelnen Posten aufgegliedert ist, erhalten.
+            </p>
+
+        </div>
+        <div class="heading3 my-10">
+            <h3>Zurverfügungstellen der Verkaufsunterlagen sowie weiterer Informationen</h3>
+        </div>
+        <p class="text-14">
+            Der/Die Verkaufsprospekt/e sowie der/die aktuelle/n Jahresbericht/e und ggf. der/die anschließende/n
+            Halbjahresbericht/e wurden mir/uns rechtzeitig kos-
+            tenlos zur Verfügung gestellt. Im Falle des Erwerbes von Anteilen eines alternativen Investmentfonds wurde/n
+            ich/wir über den jüngsten Nettoinventarwert
+            des Investmentvermögens informiert.
+        </p>
+        <b
+                class="text-14 my-10">Bitte ein Feld ankreuzen und unterschreiben:
+        </b>
+        <div class="d-flex flex-column">
+            <p style="  margin-left: -7px;" class="d-flex align-items-start   my-10">
+                <input id="UNTERLAGEN_JA" class="one" type="checkbox"> Die genannten Unterlagen/Informationen wurden
+                mir/uns übergeben.
+            </p>
+            <p class="d-flex align-items-start   ml-fix my-10 ">
+                <input id="UNTERLAGEN_NEIN" class="one" type="checkbox"> Ich/Wir verzichte/n auf die Übergabe dieser
+                Unterlagen/Informationen. <br>
+                Die ex ante-Kosteninformation habe/n ich/wir erhalten. <br>
+                Ich/Wir wurde/n über die Möglichkeit informiert, die kostenlose Aushändigung der
+                Basisinformationsblätter in Papierform verlangen zu können. Diese ha-
+                be/n ich/wir rechtzeitig wie folgt erhalten:
+            </p>
+            <p class="d-flex  align-items-start   ml-fix my-10">
+                <input id="PRIIP_PAPIERFORM" class="one" type="checkbox"> Das/Die Basisinformationsblatt/-blätter
+                wurde/n mir/uns in Papierform übergeben.
+
+            </p>
+
+            <p class="d-flex  align-items-start   ml-fix my-10">
+                <input id="PRIIP_MAIL" class="one" type="checkbox"> Das/Die Basisinformationsblatt/-blätter wurde/n
+                mir/uns auf meine/ unsere angegebene E-Mail-Adresse zur Verfügung gestellt.
+
+            </p>
+            <p class="d-flex align-items-start  my-10">
+                <input id="PRIIP_PRIIP_DIGITALER_FORM" class="one" type="checkbox">Das/Die
+                Basisinformationsblatt/-blätter wurde/n mir/uns in digitaler Form über eine Webseite zur Verfügung
+                gestellt. Ich/Wir habe/n die Möglichkeit
+                des Einsehens und/oder Downloads dieser Unterlagen/Informationen genutzt.
+            </p>
+
+        </div>
+        <div class="input-w">
+            <div class="w-50">
+                <input id="UNTERLAGEN_ORT_DATUM_01" type="text">
+                <p class="text-small">Ort, Datum</p>
+
+            </div>
+            <div class="w-50">
+                <input id="UNTERLAGEN_ORT_DATUM_02" type="text">
+                <p class="text-small">Ort, Datum</p>
+
+            </div>
+        </div>
+
+        <div class="note">
+            <h3>Recht auf Widerruf gemäß § 305 KAGB</h3>
+            <p class="text-14">
+                Erfolgt der Kauf von Anteilen oder Aktien an Investmentvermögen durch mündliche Verhandlungen außerhalb
+                der ständigen Geschäftsräume desje-
+                nigen, der die Anteile oder Aktien verkauft oder den Verkauf vermittelt hat, so kann der Käufer seine
+                Erklärung über den Kauf binnen einer Frist von
+                zwei Wochen der Verwaltungsgesellschaft gegenüber in Textform widerrufen (Widerrufsrecht); dies gilt
+                auch dann, wenn derjenige, der Anteile oder
+                Aktien verkauft oder den Verkauf vermittelt, keine ständigen Geschäftsräume hat. Handelt es sich um ein
+                Fernabsatzgeschäft i. S. d. § 312c des Bür-
+                gerlichen Gesetzbuchs, so ist bei einer Erbringung von Finanzdienstleistungen, deren Preis auf dem
+                Finanzmarkt von Schwankungen abhängt, ein
+                Widerruf nach den Vorschriften über Fernabsatzverträge ausgeschlossen
+                <br>
+                Zur Wahrung der Frist genügt die rechtzeitige Absendung der Widerrufserklärung. Der Widerruf ist
+                gegenüber der Fondsdepot Bank GmbH, 95025
+                Hof in Textform unter Angabe der Person des Erklärenden einschließlich dessen Unterschrift zu erklären,
+                wobei eine Begründung nicht erforderlich
+                ist. Die Widerrufsfrist beginnt erst zu laufen, wenn die Durchschrift des Antrags auf Vertragsschluss
+                dem Käufer ausgehändigt oder ihm eine Kaufab-
+                rechnung übersandt worden ist und in der Durchschrift oder der Kaufabrechnung eine Belehrung über das
+                Widerrufsrecht wie die vorliegende ent-
+                halten ist. Ist der Fristbeginn streitig, trifft die Beweislast den Verkäufer.
+                <br>
+                <br>
+                Das Recht zum Widerruf besteht nicht, wenn der Verkäufer nachweist, dass der Käufer kein Verbraucher im
+                Sinne des § 13 des Bürgerlichen Ge-
+                setzbuchs ist oder er den Käufer zu Verhandlungen, die zum Verkauf der Anteile oder Aktien geführt
+                haben, aufgrund vorhergehender Bestellung ge-
+                mäß § 55 Absatz 1 der Gewerbeordnung aufgesucht hat.
+                <br><br>
+                Ist der Widerruf erfolgt und hat der Käufer bereits Zahlungen geleistet, so ist die
+                Verwaltungsgesellschaft verpflichtet, dem Käufer, gegebenenfalls
+                Zug um Zug gegen Rückübertragung der erworbenen Anteile oder Aktien, die bezahlten Kosten und einen
+                Betrag auszuzahlen, der dem Wert der
+                Anteile oder Aktien am Tage nach dem Eingang der Widerrufserklärung entspricht
+                <br><br>
+                Auf das Recht zum Widerruf kann nicht verzichtet werden.
+                <br><br>
+                Die vorstehenden Ausführungen gelten entsprechend beim Verkauf von Anteilen oder Aktien durch den
+                Anleger.
+                <br><br>
+
+            </p>
+            <b
+                    class="justofy-end text-14 ">Ende der Widerrufsbelehrung
+
+            </b>
+        </div>
+        <div class="hr"></div>
+        <div class="ww-50 d-flex justify-between">
+            <div class=" inner-heading d-flex flex-column">
+                <p class="para para2">1. Inhaber</p>
+                <div class="input5-w5 d-flex justify-between">
+                    <div class="w-50 m-10">
+                        <input class="disabled" id="INH_01_NAME_DUPL_NAME" type="text">
+                        <p class="text-small">Name</p>
+
+                    </div>
+                    <div class="w-50 m-10">
+                        <input class="disabled" id="INH_01_VORNAME_DUPL_NAME" type="text">
+                        <p class="text-small">Vorname/n</p>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="inner-heading d-flex flex-column">
+                <p class=" para para2">2. Inhaber</p>
+
+                <div class="input5-w5 d-flex justify-between">
+                    <div class="w-50 m-10">
+                        <input class="disabled" id="INH_02_NAME_DUPL_NAME" type="text">
+                        <p class="text-small">Name</p>
+
+                    </div>
+                    <div class="w-50 m-10">
+                        <input class="disabled" id="INH_02_VORNAME_DUPL_NAME" type="text">
+                        <p class="text-small">Vorname/n</p>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="id-num d-flex justify-end my-10">
+            <div>
+                <input class="disabled" id="DEPOT_NR_DUPL_02" maxlength="10" placeholder="0123456789">
+                <b class="text-small">Depot-Nr.</b>
+
+
+            </div>
+
+        </div>
+        <div>
+            <div class="heading3 my-10">
+                <h3>Unterschrift/en zum Auftrag</h3>
+                <b
+                        class="text-14 my-10">Mit meiner/unseren nachfolgenden Unterschrift/en bestätige/n ich/wir den
+                    Auftrag.
+                </b>
+            </div>
+            <div class="input-w">
+                <div class="w-50">
+                    <input id="AUFTRAG_ORT_DATUM_01" type="text">
+                    <p class="text-small">Ort, Datum</p>
+
+                </div>
+                <div class="w-50">
+                    <input id="AUFTRAG_ORT_DATUM_02" type="text">
+                    <p class="text-small">Ort, Datum</p>
+
+                </div>
+            </div>
+            <div class="d-flex  justify-between">
+                <div class="btn-div my-10">
+                    <input id="btn-download" class="btn" type="button" value="PDF herunterladen">
+
+
+                </div>
+                <div class="btn-div my-10">
+                    <input id="btn-empty" style="background-color: #DCD2C9;  font-weight: 700; color: #503A96;"
+                           class="btn" type="button" value="Leeres PDF">
+                </div>
+
+            </div>
+            <section class="list">
+                <h4>Fußnotenverzeichnis:</h4>
+                <ol>
+                    <li>Sämtliche Vornamen gemäß Ausweisdokument.</li>
+                    <li>Die Erteilung dieser Auskunft ist freiwillig.</li>
+                    <li>Angaben zur Höhe des Ausgabeaufschlages bzw. Rücknahmeabschlages und der jährlich anfallenden
+                        Vergütungen sind in dem/den jeweiligen Verkaufsprospekt/en der Investmentvermögen bzw.
+                        der ex ante-Kosteninformation enthalten
+                    </li>
+                    <li>Abweichende Mindestanlagesumme/n auf Ebene des Investmentvermögens ist/sind möglich. Eine
+                        Übersicht der betreffenden Investmentvermögen ist bei der Bank erhältlich.
+                    </li>
+
+                </ol>
+            </section>
+
+
+        </div>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='scripts.js') }}"></script>
+</body>
+
+</html>

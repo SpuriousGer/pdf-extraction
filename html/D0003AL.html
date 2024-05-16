@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Receipt</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+<div class="container">
+    <nav>
+        <p class="text-14">Version ab 2023</p>
+        <img src="{{ url_for('static', filename='Fondsdepot-Bank-FNZ-black.svg') }}" alt="Logo">
+    </nav>
+    <section class="application">
+        <h1>
+            Freistellungsauftrag für Kapitalerträge und Antrag auf
+        </h1>
+        <h1>
+            ehegattenübergreifende/lebenspartnerübergreifende Verlustverrechnung
+        </h1>
+        <p class="text-14 p-light">(Gilt nicht für Betriebseinnahmen und Einnahmen aus Vermietung und Verpachtung.)
+        </p>
+        <p class="text-14 my-10 text-500">Gläubiger der Kapitalerträge</p>
+    </section>
+    <div class="inner-heading">
+        <div class="input-w">
+            <div class="w-50">
+                <input id="INH_01_NAME" type="text">
+                <p class="text-small">Name</p>
+
+            </div>
+            <div class="w-50">
+                <input id="INH_01_VORNAME" type="text">
+                <p class="text-small">Vorname/n </p>
+
+            </div>
+        </div>
+        <div class="input-w">
+            <div class="w-90">
+                <input id="INH_01_STRASSE" type="text">
+                <p class="text-small">Straße</p>
+
+            </div>
+            <div>
+                <input id="INH_01_NR" type="text">
+                <p class="text-small">Nummer</p>
+
+            </div>
+        </div>
+        <div class="input-w">
+            <div class="w-20">
+                <input id="INH_01_PLZ" type="text">
+                <p class="text-small">PLZ</p>
+
+            </div>
+            <div class="w-5">
+                <input id="INH_01_ORT" type="text">
+                <p class="text-small">Ort</p>
+
+            </div>
+            <div>
+                <input id="INH_01_GEBDATUM" type="text">
+                <p class="text-small">Geburtsdatum</p>
+
+            </div>
+        </div>
+        <div class="input-w">
+            <div class="w-50p">
+                <input id="INH_01_STEUER_ID" type="text">
+                <p class="text-small">Identifikationsnummer</p>
+
+            </div>
+        </div>
+    </div>
+    <div class="user-info my-10">
+
+
+        <div class="check">
+            <input id="GEMEINSAMER_FSA_JA" class="one" type="checkbox">
+            <p class="text-14 text-500">gemeinsamer Freistellungsauftrag <sup>1</sup></p>
+        </div>
+    </div>
+    <div>
+        <p class="text-14"><span class="text-500">Ehegatte/Lebenspartner</span>(Adressangaben sind nur erforderlich,
+            falls abweichend vom Gläubiger der Kapitalerträge)</p>
+    </div>
+    <div class="inner-heading">
+        <div class="input-w">
+            <div class="w-50">
+                <input id="INH_02_NAME" type="text">
+                <p class="text-small">Name</p>
+
+            </div>
+            <div class="w-50">
+                <input id="INH_02_VORNAME" type="text">
+                <p class="text-small">Vorname/n </p>
+
+            </div>
+        </div>
+        <div class="input-w">
+            <div class="w-90">
+                <input id="INH_02_STRASSE" type="text">
+                <p class="text-small">Straße</p>
+
+            </div>
+            <div>
+                <input id="INH_02_NR" type="text">
+                <p class="text-small">Nummer</p>
+
+            </div>
+        </div>
+        <div class="input-w">
+            <div class="w-20">
+                <input id="INH_02_PLZ" type="text">
+                <p class="text-small">PLZ</p>
+
+            </div>
+            <div class="w-5">
+                <input id="INH_02_ORT" type="text">
+                <p class="text-small">Ort</p>
+
+            </div>
+            <div>
+                <input id="INH_02_GEBDATUM" type="text">
+                <p class="text-small">Geburtsdatum</p>
+
+            </div>
+        </div>
+        <div class="input-w border-dotted">
+            <div class="w-50p">
+                <input id="INH_02_STEUER_ID" type="text">
+                <p class="text-small">Identifikationsnummer bei gemeinsamem Freistellungsauftrag</p>
+
+            </div>
+        </div>
+    </div>
+    <div>
+        <p class="text-14 text-500">
+            Bitte zurücksenden an: <br>
+            Fondsdepot Bank GmbH <br>
+            95025 Hof
+        </p>
+        <p class="text-14">Hiermit erteile ich/erteilen wir <sup>2</sup> Ihnen den Auftrag, meine/unsere <sup>2</sup>
+            bei Ihrem Institut anfallenden Kapitalerträge vom Steuerabzug freizustellen und zwar</p>
+    </div>
+    <div class="d-flex my-10">
+        <p class="d-flex justify-center align-items-center text-14">
+
+            <input id="FSA_HOEHE_01" class="one" type="checkbox">
+            bis zu einem Betrag von
+            <input id="FSA_HOEHE_01_BETRAG" style="width: 90px; height: 20px; margin: 0 3px;" type="text">
+
+            EUR (bei Verteilung des Sparer-Pauschbetrages auf mehrere Kreditinstitute).
+        </p>
+
+    </div>
+    <div class="d-flex my-10">
+        <p class="d-flex justify-center align-items-center text-14">
+
+            <input id="FSA_HOEHE_02" class="one" type="checkbox">
+            bis zur Höhe des für mich/uns <sup>2</sup> geltenden Sparer-Pauschbetrages von insgesamt 1.000 EUR/2.000 EUR
+            <sup>2</sup>
+        </p>
+
+    </div>
+    <div class="d-flex my-10">
+        <p class="d-flex justify-center align-items-center text-14">
+
+            <input id="FSA_HOEHE_03" class="one" type="checkbox">
+            über 0 EUR <sup>3</sup> (sofern lediglich eine ehegattenübergreifende/lebenspartnerübergreifende
+            Verlustverrechnung beantragt werden soll).
+        </p>
+
+    </div>
+
+    <div class="d-flex my-10">
+        <p class="d-flex justify-center align-items-center text-14">
+
+            Dieser Auftrag gilt ab dem 01.01
+            <input id="FSA_HOEHE_03_AB_JAHR" style="width: 70px; height: 20px; margin: 0 3px;" type="text">
+
+            bzw. ab Beginn der Geschäftsverbindung.
+        </p>
+
+    </div>
+    <div class="d-flex my-10">
+        <p class="d-flex justify-center align-items-center text-14">
+
+            <input id="FSA_DAUER_04" class="one" type="checkbox">
+            so lange, bis Sie einen anderen Auftrag von mir/uns erhalten. </p>
+
+    </div>
+    <div class="d-flex my-10">
+        <p class="d-flex justify-center align-items-center text-14">
+
+            <input id="FSA_DAUER_05" class="one" type="checkbox">
+            bis zum 31.12
+            <input id="FSA_DAUER_05_BIS_JAHR" style="width: 70px; height: 20px; margin: 0 3px;" type="text">
+        </p>
+
+    </div>
+    <div>
+        <p class="text-14">
+            Die in dem Auftrag enthaltenen Daten und freigestellten Beträge werden dem Bundeszentralamt für Steuern
+            (BZSt) übermittelt. Sie dürfen zur Durchfüh-
+            rung eines Verwaltungsverfahrens oder eines gerichtlichen Verfahrens in Steuersachen oder eines
+            Strafverfahrens wegen einer Steuerstraftat oder eines
+            Bußgeldverfahrens wegen einer Steuerordnungswidrigkeit verwendet sowie vom BZSt den Sozialleistungsträgern
+            übermittelt werden, soweit dies zur
+            Überprüfung des bei der Sozialleistung zu berücksichtigenden Einkommens oder Vermögens erforderlich ist (§
+            45d EStG).
+            <br>
+            Ich versichere/Wir versichern <sup>2</sup>, dass mein/unser<sup>2</sup> Freistellungsauftrag zusammen mit
+            Freistellungsaufträgen an andere Kreditinstitute, Bausparkassen
+            usw. den für mich/uns<sup>2</sup> geltenden Höchstbetrag von insgesamt 1.000 EUR/2.000 EUR<sup>2</sup> nicht
+            übersteigt. Ich versichere/Wir versichern<sup>2</sup> außerdem, dass
+            ich/wir<sup>2</sup> mit allen für das Kalenderjahr erteilten Freistellungsaufträgen für keine höheren
+            Kapitalerträge als insgesamt 1.000 EUR/2.000 EUR im Kalen-
+            derjahr die Freistellung in Anspruch nehme/n.<sup>2</sup>
+            <br>
+            Die mit dem Freistellungsauftrag angeforderten Daten werden aufgrund von § 44a Absatz 2, 2a und § 45d Absatz
+            1 EStG erhoben. Die Angabe der steu-
+            erlichen Identifikationsnummer ist für die Übermittlung der Freistellungsdaten an das BZSt erforderlich. Die
+            Rechtsgrundlagen für die Erhebung der Identi-
+            fikationsnummer ergeben sich aus § 139a Absatz 1 Satz 1 2. Halbsatz AO, § 139b Absatz 2 AO und § 45d EStG.
+            Die Identifikationsnummer darf nur für
+            Zwecke des Besteuerungsverfahrens verwendet werden.
+
+
+        </p>
+
+    </div>
+    <div class="input-w my-10 ">
+        <div class="w-50">
+            <input id="FSA_ORT_DATUM_01" type="text">
+            <p class="text-small">Ort, Datum</p>
+
+        </div>
+        <div class="w-50">
+            <input id="FSA_ORT_DATUM_02" type="text">
+            <p class="text-small">Ort, Datum</p>
+
+        </div>
+    </div>
+    <div class="d-flex my-10">
+        <p class="d-flex justify-center align-items-center text-14">
+
+            <input class="one" type="checkbox" checked>
+            Zutreffendes bitte ankreuzen.
+        </p>
+
+    </div>
+    <div class=" border-bottom d-flex justify-between">
+        <div class=" inner-heading d-flex flex-column">
+            <p class="text-14 text-500">Gläubiger der Kapitalerträge</p>
+            <div class="input5-w5 d-flex justify-between">
+                <div class="w-50 ">
+                    <input class="disabled" id="INH_01_NAME_DUPL" type="text" disabled>
+                    <p class="text-small">Name</p>
+
+                </div>
+                <div class="w-50 mx-10">
+                    <input class="disabled" id="INH_01_VORNAME_DUPL" type="text" disabled>
+                    <p class="text-small">Vorname/n</p>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="inner-heading d-flex flex-column">
+            <p class="text-14 text-500 ">Ehegatte/Lebenspartner</p>
+
+            <div class="input5-w5 d-flex justify-between">
+                <div class="w-50 ">
+                    <input class="disabled" id="INH_02_NAME_DUPL" type="text" disabled>
+                    <p class="text-small">Name</p>
+
+                </div>
+                <div class="w-50 mx-10">
+                    <input class="disabled" id="INH_02_VORNAME_DUPL" type="text" disabled>
+                    <p class="text-small">Vorname/n</p>
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <div>
+        <p class="text-14 paragraph">Der Höchstbetrag von 2.000 EUR gilt nur bei Ehegatten/Lebenspartnern, die einen
+            gemeinsamen Freistellungsauftrag erteilen und bei denen die Voraus-
+            setzungen einer Zusammenveranlagung im Sinne des § 26 Absatz 1 Satz 1 EStG vorliegen. Der gemeinsame
+            Freistellungsauftrag ist z. B. nach Auflö-
+            sung der Ehe/Lebenspartnerschaft oder bei dauerndem Getrenntleben zu ändern. Erteilen
+            Ehegatten/Lebenspartner einen gemeinsamen Freistellungs-
+            auftrag, führt dies am Jahresende zu einer Verrechnung der Verluste des einen Ehegatten/Lebenspartner mit
+            den Gewinnen und Erträgen des anderen
+            Ehegatten/Lebenspartner. Freistellungsaufträge können nur mit Wirkung zum Kalenderjahresende befristet
+            werden. Eine Herabsetzung bis zu dem im Ka-
+            lenderjahr bereits ausgenutzten Betrag ist jedoch zulässig. Sofern ein Freistellungsauftrag im laufenden
+            Jahr noch nicht ausgenutzt wurde, kann er auch
+            zum 1. Januar des laufenden Jahres widerrufen werden. Der Freistellungsauftrag kann nur für sämtliche Depots
+            oder Konten bei einem Kreditinstitut oder
+            einem anderen Auftragnehmer gestellt werden.
+            <br><br><br>
+            Wird die Geschäftsbeziehung im laufenden Kalenderjahr vollständig beendet (z. B. Auszahlung eines
+            Lebensversicherungsvertrages) und der vorliegende
+            Freistellungsauftrag nicht zum Kalenderjahresende befristet, so kann aus Vereinfachungsgründen angenommen
+            werden, dass der erteilte Freistellungs-
+            auftrag ab dem Folgejahr – auch ohne ausdrückliche Änderung nach vorgeschriebenem Muster - nicht mehr gültig
+            sein soll
+        </p>
+    </div>
+    <div class="d-flex  justify-between">
+        <div class="btn-div my-10">
+            <input id="btn-download" class="btn" type="button" value="PDF herunterladen">
+
+
+        </div>
+        <div class="btn-div my-10">
+            <input id="btn-empty" style="background-color: #DCD2C9;  font-weight: 700; color: #503A96;" class="btn"
+                   type="button" value="Leeres PDF">
+        </div>
+
+    </div>
+    <section class="list">
+        <h4>Fußnotenverzeichnis:</h4>
+        <ol>
+            <li>Angaben zum Ehegatten/Lebenspartner und dessen Unterschrift sind nur bei einem gemeinsamen
+                Freistellungsauftrag erforderlich.
+            </li>
+            <li>Nichtzutreffendes bitte streichen.</li>
+
+            <li>Möchten Sie mit diesem Antrag lediglich eine ehegattenübergreifende/lebenspartnerübergreifende
+                Verlustverrechnung beantragen, so kreuzen Sie bitte dieses Feld an.
+            </li>
+
+        </ol>
+    </section>
+
+
+</div>
+
+
+<script src="{{ url_for('static', filename='scripts.js') }}"></script>
+</body>
+
+</html>

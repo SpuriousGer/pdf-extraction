@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Receipt</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+    <nav>
+        <p>Dezember 2023</p>
+        <img src="{{ url_for('static', filename='Fondsdepot-Bank-FNZ-black.svg') }}" alt="Logo">
+    </nav>
+
+    <section class="name">
+        <div class="username">
+            <h1>Änderungen</h1>
+            <h2>Anschrift/Name</h2>
+        </div>
+    </section>
+    <div class="user-info">
+        <p class="info">
+            Der Auftrag kann per Telefax an +49 (0) 9281 7258 - 46118 oder per Mailanhang
+            jeweils mit Kundenunterschrift an info@fondsdepotbank.de gesendet werden
+        </p>
+
+        <div class="id-num">
+            <div class="bg">
+                <input id="DEPOT_NR" maxlength='10' placeholder="0123456789">
+                <p>Depot-Nr</p>
+            </div>
+            <div class="bg">
+                <input id="GK_NR" type="text" placeholder="0123456789">
+                <p>Geldkonto-Nr.</p>
+            </div>
+            <div class="input-div">
+                <p>Dieser Auftrag soll außerdem für das/die folgende/n Depot/s/Konto/en gelten:</p>
+                <div class="input">
+                    <div>
+                        <input id="DEPOT_GK_NR_02" type="text" placeholder="0123456789">
+                        <p>Nr.</p>
+
+                    </div>
+                    <div>
+                        <input id="DEPOT_GK_NR_03" type="text" placeholder="0123456789">
+                        <p>Nr.</p>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="heading">
+            <p>A. Angaben Depot-/Geldkontoinhaber (im Nachfolgenden "Inhaber" genannt)</p>
+        </div>
+        <div class="inner-heading">
+            <p class="para">1. Inhaber</p>
+            <div class="input-w">
+                <div class="w-50">
+                    <input id="INH_01_NAME" type="text">
+                    <p>Name</p>
+
+                </div>
+                <div class="w-50">
+                    <input id="INH_01_VORNAME" type="text">
+                    <p>Vorname/n <sup>1</sup></p>
+
+                </div>
+            </div>
+            <div class="input-w">
+                <div class="w-90">
+                    <input id="INH_01_STRASSE" type="text">
+                    <p>Straße</p>
+
+                </div>
+                <div>
+                    <input id="INH_01_NR" type="text">
+                    <p>Nummer</p>
+
+                </div>
+            </div>
+            <div class="input-w">
+                <div class="w-20">
+                    <input id="INH_01_PLZ" type="text">
+                    <p>PLZ</p>
+
+                </div>
+                <div class="w-5">
+                    <input id="INH_01_ORT" type="text">
+                    <p>Ort</p>
+
+                </div>
+                <div>
+                    <input id="INH_01_LAND" type="text">
+                    <p>Land</p>
+
+                </div>
+            </div>
+            <div class="input-w">
+                <div class="w-50">
+                    <input id="INH_01_TEL" type="text">
+                    <p>Telefon <sup>2</sup></p>
+
+                </div>
+                <div class="w-50">
+                    <input id="INH_01_EMAIL" type="text">
+                    <p>E-Mail</p>
+
+                </div>
+            </div>
+        </div>
+        <div class="inner-heading">
+            <p class="para">2. Inhaber</p>
+            <div class="input-w">
+                <div class="w-50">
+                    <input id="INH_02_NAME" type="text">
+                    <p>Name</p>
+
+                </div>
+                <div class="w-50">
+                    <input id="INH_02_VORNAME" type="text">
+                    <p>Vorname/n <sup>1</sup></p>
+
+                </div>
+            </div>
+            <div class="input-w">
+                <div class="w-90">
+                    <input id="INH_02_STRASSE" type="text">
+                    <p>Straße</p>
+
+                </div>
+                <div class="">
+                    <input id="INH_02_NR" type="text">
+                    <p>Nummer</p>
+
+                </div>
+            </div>
+            <div class="input-w">
+                <div class="w-20">
+                    <input id="INH_02_PLZ" type="text">
+                    <p>PLZ</p>
+
+                </div>
+                <div class="w-5">
+                    <input id="INH_02_ORT" type="text">
+                    <p>Ort</p>
+
+                </div>
+                <div class="">
+                    <input id="INH_02_LAND" type="text">
+                    <p>Land</p>
+
+                </div>
+            </div>
+            <div class="input-w">
+                <div class="w-50">
+                    <input id="INH_02_TEL" type="text">
+                    <p>Telefon <sup>2</sup></p>
+
+                </div>
+                <div class="w-50">
+                    <input id="INH_02_EMAIL" type="text">
+                    <p>E-Mail</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="user-info2">
+        <div class="heading">
+            <p>B. Änderung der Anschrift</p>
+        </div>
+        <div class="para1">
+            <p>Bitte vermerken Sie in Ihren Unterlagen ab sofort, sonst ab dem</p>
+            <div class="date" style="margin: 0 10px;">
+                <input id="AEND_ANSCHRIFT_DATUM_AB" style="width: 100px;" type="text">
+                <p>Datum</p>
+            </div>
+            <p>folgende neue</p>
+        </div>
+        <div class="check">
+            <input id="AEND_ANSCHRIFT_01" type="checkbox">
+            <p>Meldeanschrift</p>
+        </div>
+        <div class="check">
+            <input id="AEND_ANSCHRIFT_02" type="checkbox">
+            <p>abweichende Versandanschrift</p>
+        </div>
+        <div class="date2">
+            <p>befristet bis</p>
+            <div>
+                <input id="AEND_ANSCHRIFT_02_DATUM_BIS" style="width: 100px;" type="text">
+                <p>Datum</p>
+            </div>
+        </div>
+        <div class="inner-heading">
+            <div class="input-w">
+                <div class="w-90">
+                    <input id="AEND_INH_STRASSE" type="text">
+                    <p>Straße</p>
+
+                </div>
+                <div class="">
+                    <input id="AEND_INH_NR" type="text">
+                    <p>Nummer</p>
+
+                </div>
+            </div>
+            <div class="input-w">
+                <div class="w-20">
+                    <input id="AEND_INH_PLZ" type="text">
+                    <p>PLZ</p>
+
+                </div>
+                <div class="w-5">
+                    <input id="AEND_INH_ORT" type="text">
+                    <p>Ort</p>
+
+                </div>
+                <div>
+                    <input id="AEND_INH_LAND" type="text">
+                    <p>Land</p>
+
+                </div>
+            </div>
+        </div>
+        <div class="note">
+            <p>Hinweis: Zugangsdaten für das Banking Portal sowie die pushTAN-App werden nur an die Meldeanschrift
+                des Inhabers versendet. Dies gilt auch bei
+                hinterlegter abweichender Versandanschrift</p>
+        </div>
+    </div>
+    <div class="user-info2">
+        <div class="heading">
+            <p>C. Namensänderung</p>
+        </div>
+        <div class="para1">
+            <p>Bitte veranlassen Sie die Namensänderung zu o. g. Depot/s bzw. Geldkonto/-konten für</p>
+            <input id="AEND_INH_WEIBLICH" style="width: 30px;" type="checkbox">
+            <p>weiblich</p>
+            <input id="AEND_INH_MAENNLICH" style="width: 30px;" type="checkbox">
+            <p>männlich</p>
+            <input id="AEND_INH_DIVERS" style="width: 30px;" type="checkbox">
+            <p>divers</p>
+        </div>
+        <div class="inner-heading">
+            <div class="input-w">
+                <div class="w-50">
+                    <input id="AEND_INH_NAME" type="text">
+                    <p>Name</p>
+
+                </div>
+                <div class="w-50">
+                    <input id="AEND_INH_VORNAME" type="text">
+                    <p>Vorname/n <sup>1</sup></p>
+
+                </div>
+            </div>
+            <div class="input-w">
+                <div class="w-20">
+                    <input id="AEND_INH_GEBDATUM" type="text">
+                    <p>Geburtsdatum</p>
+
+                </div>
+                <div class="w-5">
+                    <input id="AEND_INH_GEBORT" type="text">
+                    <p>Geburtsort</p>
+
+                </div>
+                <div>
+                    <input id="AEND_INH_STAATSANG" type="text">
+                    <p>Staatsangehörigkeit</p>
+
+                </div>
+            </div>
+        </div>
+        <div class="ww-50 my-10">
+            <div class="inner-heading2">
+                <p class="para para2">1. Inhaber</p>
+                <div class="input5-w5">
+                    <div class="w-50">
+                        <input class="disabled" id="INH_01_NAME_DUPL" type="text" disabled>
+                        <p>Name </p>
+
+                    </div>
+                    <div class="w-50">
+                        <input class="disabled" id="INH_01_VORNAME_DUPL" type="text" disabled>
+                        <p>Vorname</p>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="inner-heading2">
+                <p class=" para para2">2. Inhaber</p>
+
+                <div class="input5-w5">
+                    <div class="w-50">
+                        <input class="disabled" id="INH_02_NAME_DUPL" type="text" disabled>
+                        <p>Name</p>
+
+                    </div>
+                    <div class="w-50">
+                        <input class="disabled" id="INH_02_VORNAME_DUPL" type="text" disabled>
+                        <p>Vorname</p>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="user-info user-info3">
+        <div class="id-num depot">
+            <div class="bg">
+                <input class="disabled" id="GK_NR_DUPL" maxlength='10' placeholder="0123456789" disabled>
+                <p>Geldkonto-Nr.</p>
+            </div>
+            <div class="bg">
+                <input class="disabled" id="DEPOT_NR_DUPL" type="text" placeholder="0123456789" disabled>
+                <p>Depot-Nr</p>
+            </div>
+        </div>
+
+    </div>
+    <div class="para3">
+        <p class="p1">
+            Für den zukünftigen Geschäftsverkehr gilt ab sofort die auf diesem Formular geleistete neue Unterschrift
+            (geänderter Name) des Inhabers.
+        </p>
+        <p class="p2">
+            Zur Vervollständigung der Eröffnungsunterlagen erfolgt die Unterzeichnung des Inhabers sowohl mit der
+            neuen Unterschrift (neuer Name) als auch mit der
+            bereits bei Ihnen hinterlegten Unterschrift (alter Name).
+        </p>
+
+    </div>
+    <!-- <div class="cross-div">
+        <div class="inner-cross-div">
+            <p class="cross">✘</p>
+            <div class="sign">
+                <div style="visibility: hidden;">gfghhgghgf</div>
+                <p>Neue Unterschrift (neuer Name)</p>
+            </div>
+        </div>
+        <div class="inner-cross-div">
+            <p class="cross">✘</p>
+            <div class="sign">
+                <div style="visibility: hidden;"> fdgfdgfdfd</div>
+                <p>Hinterlegte Unterschrift (alter Name)</p>
+            </div>
+        </div>
+
+    </div> -->
+    <div class="legal">
+        <div class="heading">
+            <p>D. Legitimation</p>
+        </div>
+        <p>Namensänderung geprüft durch Einsicht in:</p>
+        <h3>Art des Dokumentes</h3>
+        <div class="d-flex">
+            <div class="check">
+                <input id="LEGI_DOK_FB" type="checkbox">
+                <p>Familienstammbuch</p>
+            </div>
+            <div class="check">
+                <input id="LEGI_DOK_PA" type="checkbox">
+                <p>Personalausweis</p>
+            </div>
+            <div class="check">
+                <input id="LEGI_DOK_RP" type="checkbox">
+                <p>Reisepass</p>
+            </div>
+            <div class="check">
+                <input id="LEGI_DOK_BS" type="checkbox">
+                <p>Bescheinigung</p>
+            </div>
+            <div class="check">
+                <input id="LEGI_DOK_ES" type="checkbox">
+                <p>Eheschließung/Namensführung</p>
+            </div>
+        </div>
+        <div class="inner-heading" style="margin: 15px 0;">
+            <div class="input-w">
+                <div class="w-50">
+                    <input id="LEGI_AUSWEIS_NR" type="text">
+                    <p>Ausweisnummer</p>
+
+                </div>
+                <div class="w-50">
+                    <input id="LEGI_AUSWEIS_DATUM" type="text">
+                    <p>Ausstellungsdatum</p>
+
+                </div>
+            </div>
+            <input id="LEGI_AUSWEIS_BEHOERDE_ORT" style="width: 100%;" type="text">
+            <p>ausstellende Behörde, Ort</p>
+            <h2 style="font-size: 16px; font-weight: bold;">Die Richtigkeit der Legitimationsdaten bzw. die
+                Identität des Inhabers wurde durch Einsichtnahme in das Legitimationsdokument geprüft. Das
+                Legitimationsdokument lag im Original vor. Die Unterschrift wurde vor mir geleistet. Sämtliche
+                Legitimationsdokumente liegen vollständig in
+                heller, gut lesbarer Kopie bei.</h2>
+            <div style="width: 50%; margin: 15px 0;" class="input-w">
+                <div class="w-50">
+                    <input id="LEGI_ORT_DATUM" type="text">
+                    <p>Ort, Datum</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="cross-div">
+        <div class="inner-cross-div">
+            <p class="cross">✘</p>
+            <div class="sign">
+                <div style="visibility: hidden;">gfghhgghgf</div>
+                <p>Neue Unterschrift (neuer Name)</p>
+            </div>
+        </div>
+
+    </div> -->
+    <div>
+        <div class="note">
+            <p><b>Wichtiger Hinweis:</b> Ein eventuell erteilter Freistellungsauftrag für Kapitalerträge verliert
+                mit dem Tag der Namensänderung/Heirat/Scheidung seine
+                Gültigkeit!</p>
+        </div>
+    </div>
+    <div>
+        <div class="heading2">
+            <p>Unterschrift/en zum Auftrag</p>
+        </div>
+        <p>Mit meiner/unseren nachfolgenden Unterschrift/en bestätige/n ich/wir den Auftrag.</p>
+        <div class="inner-heading" style="margin: 15px 0;">
+            <div class="input-w">
+                <div class="w-50">
+                    <input id="AUFTRAG_ORT_DATUM_01" type="text">
+                    <p>Ort, Datum</p>
+
+                </div>
+                <div class="w-50">
+                    <input id="AUFTRAG_ORT_DATUM_02" type="text">
+                    <p>Ort, Datum</p>
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <!-- <div class="cross-div">
+        <div class="inner-cross-div">
+            <p class="cross">✘</p>
+            <div class="sign">
+                <div style="visibility: hidden;">gfghhgghgf</div>
+                <p>Unterschrift 1. Inhaber bzw. 1. gesetzlicher Vertreter bzw. Bevoll-
+                    mächtigter</p>
+            </div>
+        </div>
+        <div class="inner-cross-div">
+            <p class="cross">✘</p>
+            <div class="sign">
+                <div style="visibility: hidden;"> fdgfdgfdfd</div>
+                <p>Unterschrift 2. Inhaber bzw. 2. gesetzlicher Vertreter</p>
+            </div>
+        </div>
+
+    </div> -->
+    <div class="d-flex  justify-between">
+        <div class="btn-div my-10">
+            <input id="btn-download" class="btn" type="button" value="PDF herunterladen">
+
+
+        </div>
+        <div class="btn-div my-10">
+            <input id="btn-empty" style="background-color: #DCD2C9;  font-weight: 700; color: #503A96;" class="btn"
+                   type="button" value="Leeres PDF">
+        </div>
+
+    </div>
+    <section class="list">
+        <h4>Fußnotenverzeichnis:</h4>
+        <ol>
+            <li>Sämtliche Vornamen gemäß Ausweisdokument.</li>
+            <li>Die Erteilung dieser Auskunft ist freiwillig.</li>
+            <li>In diesem Sinne sind neben Ihrem Berater berechtigt: Notare, Rechtsanwälte und Kreditinstitute.</li>
+
+        </ol>
+    </section>
+</div>
+<script src="{{ url_for('static', filename='scripts.js') }}"></script>
+</body>
+
+</html>
