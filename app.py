@@ -126,4 +126,4 @@ if __name__ == '__main__':
     if not os.path.exists('requests'):
         os.makedirs('requests')
 
-    app.run(debug=True, port=7765)
+    app.run(debug=True, host='0.0.0.0', port=7765)
