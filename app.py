@@ -116,6 +116,11 @@ def serve_html(html_name):
     return render_template(f'{html_name}.html')
 
 
+@app.route('/', methods=['GET'])
+def index():
+    return jsonify({"message": "success"}), 200
+
+
 if __name__ == '__main__':
     # Ensure the requests folder exists
     if not os.path.exists('requests'):
