@@ -125,7 +125,7 @@ def serve_html(html_name):
 
 @app.route('/', methods=['GET'])
 def index():
-    return jsonify({"message": "success", "datetime": datetime.UTC}), 200
+    return jsonify({"message": "success", "datetime": datetime.datetime.now().isoformat()}), 200
 
 
 if __name__ == '__main__':
