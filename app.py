@@ -105,6 +105,9 @@ def get_request(unique_id):
 
     return jsonify(data)
 
+@app.route('/requests', methods=['GET'])
+def request_form():
+    return render_template('request_form.html')
 
 @app.route('/html/<html_name>', methods=['GET'])
 def serve_html(html_name):
