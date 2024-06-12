@@ -1,3 +1,5 @@
+import datetime
+
 from flask import Flask, request, jsonify, send_file, render_template
 import fitz  # PyMuPDF
 import os
@@ -105,9 +107,11 @@ def get_request(unique_id):
 
     return jsonify(data)
 
+
 @app.route('/requests', methods=['GET'])
 def request_form():
     return render_template('request_form.html')
+
 
 @app.route('/html/<html_name>', methods=['GET'])
 def serve_html(html_name):
@@ -121,7 +125,7 @@ def serve_html(html_name):
 
 @app.route('/', methods=['GET'])
 def index():
-    return jsonify({"message": "success"}), 200
+    return jsonify({"message": "success", "datetime": datetime.UTC}), 200
 
 
 if __name__ == '__main__':
